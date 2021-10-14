@@ -9,8 +9,7 @@ namespace ARP.UWP.Tools
 
         [SerializeField] private MeshRenderer gradientMesh = null;
         [SerializeField] private GameObject gradientDragger = null;
-
-        private ColorPicker colorPicker = null;
+        [SerializeField] private ColorPicker colorPicker = null;
 
         private Vector3 gradientDragStartPosition;
         private Vector3 gradientDragCurrentPosition;
@@ -18,8 +17,6 @@ namespace ARP.UWP.Tools
 
         private void Awake()
         {
-            colorPicker = GetComponent<ColorPicker>();
-
             gradientDragStartPosition = gradientDragger.transform.localPosition;
             gradientDragCurrentPosition = gradientDragStartPosition;
         }
@@ -45,14 +42,15 @@ namespace ARP.UWP.Tools
             gradientDragger.transform.position = eventData.InputData;
             ConstrainDragging();
             colorPicker.ApplyColor();
-            colorPicker.UpdateSliderText();
-            colorPicker.ApplySliderValues();
+            colorPicker.UpdateControls();
         }
 
         public void CalculateDraggerPosition()
         {
-            float xPosition = ((colorPicker.Saturation + GRADIENT_DRAG_MAX_DISTANCE) * -1) + 1;
-            float yPosition = colorPicker.Brightness - GRADIENT_DRAG_MAX_DISTANCE;
+            Color.RGBToHSV(colorPicker.CustomColor, out _, out float saturation, out float brightness);
+
+            float xPosition = ((saturation + GRADIENT_DRAG_MAX_DISTANCE) * -1) + 1;
+            float yPosition = brightness - GRADIENT_DRAG_MAX_DISTANCE;
             gradientDragCurrentPosition.x = Mathf.Clamp(xPosition, -GRADIENT_DRAG_MAX_DISTANCE, GRADIENT_DRAG_MAX_DISTANCE);
             gradientDragCurrentPosition.y = Mathf.Clamp(yPosition, -GRADIENT_DRAG_MAX_DISTANCE, GRADIENT_DRAG_MAX_DISTANCE);
             gradientDragger.transform.localPosition = gradientDragCurrentPosition;
@@ -93,14 +91,17 @@ namespace ARP.UWP.Tools
             }
 
             gradientDragger.transform.localPosition = gradientDragCurrentPosition;
-            colorPicker.Saturation = Mathf.Abs(gradientDragCurrentPosition.x + (GRADIENT_DRAG_MAX_DISTANCE * -1));
-            colorPicker.Brightness = gradientDragCurrentPosition.y + GRADIENT_DRAG_MAX_DISTANCE;
 
-            Color color = Color.HSVToRGB(colorPicker.Hue, colorPicker.Saturation, colorPicker.Brightness);
-            color.a = colorPicker.Alpha;
-            colorPicker.CustomColor = color;
+            float saturation = Mathf.Abs(gradientDragCurrentPosition.x + (GRADIENT_DRAG_MAX_DISTANCE * -1));
+            float brightness = gradientDragCurrentPosition.y + GRADIENT_DRAG_MAX_DISTANCE;
 
-            colorPicker.UpdateSliderText();
+            Color.RGBToHSV(colorPicker.CustomColor, out float hue, out _, out _);
+            Color color = Color.HSVToRGB(hue, saturation, brightness);
+            colorPicker.CustomColor.r = color.r;
+            colorPicker.CustomColor.g = color.g;
+            colorPicker.CustomColor.b = color.b;
+
+            colorPicker.UpdateControls();
             colorPicker.ApplyColor();
         }
 
@@ -109,8 +110,7 @@ namespace ARP.UWP.Tools
             gradientDragger.transform.position = eventData.Pointer.Result.Details.Point;
             ConstrainDragging();
             colorPicker.ApplyColor();
-            colorPicker.ApplySliderValues();
-            colorPicker.UpdateSliderText();
+            colorPicker.UpdateControls();
         }
 
         public void StartDrag()
@@ -127,7 +127,8 @@ namespace ARP.UWP.Tools
         {
             if (gradientMesh != null && gradientMesh.material != null)
             {
-                gradientMesh.material.color = Color.HSVToRGB(colorPicker.Hue, 1, 1);
+                Color.RGBToHSV(colorPicker.CustomColor, out float hue, out _, out _);
+                gradientMesh.material.color = Color.HSVToRGB(hue, 1, 1);
             }
         }
     }

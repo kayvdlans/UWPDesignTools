@@ -1,59 +1,46 @@
-﻿using Microsoft.MixedReality.Toolkit.UI;
+﻿using ARP.UWP.Tools.Colors;
+using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
 using UnityEngine;
 
 namespace ARP.UWP.Tools
 {
-    public class RGBControl : MonoBehaviour
+    public class RGBControl : Control
     {
-        public delegate void RGBUpdateEvent(float r, float g, float b);
-        public event RGBUpdateEvent OnUpdateRGB = null;
-
-        [SerializeField, Header("RGB")] private PinchSlider sliderRed = null;
+        [SerializeField, Header("Sliders")] private PinchSlider sliderRed = null;
         [SerializeField] private PinchSlider sliderGreen = null;
         [SerializeField] private PinchSlider sliderBlue = null;
-        [SerializeField, Space] private TextMeshPro textRed = null;
+
+        [SerializeField, Header("Text Objects")] private TextMeshPro textRed = null;
         [SerializeField] private TextMeshPro textGreen = null;
         [SerializeField] private TextMeshPro textBlue = null;
 
-        private ColorPicker colorPicker = null;
-        private GradientControl gradientControl = null;
-        private bool isDraggingSliders = false;
-
-        private void Awake()
+        public override void DoUpdate()
         {
-            colorPicker = GetComponent<ColorPicker>();
-            gradientControl = GetComponent<GradientControl>();
-        }
-
-        private void Update()
-        {
-            if (isDraggingSliders)
+            if (isDraggingSlider)
             {
-                gradientControl.CalculateDraggerPosition();
+                colorPicker.CustomColor.r = sliderRed.SliderValue;
+                colorPicker.CustomColor.g = sliderGreen.SliderValue;
+                colorPicker.CustomColor.b = sliderBlue.SliderValue;
+                colorPicker.ApplyColor();
+
+                UpdateTextObjects();
+
             }
         }
 
-        public void ApplySliderValues(Color color)
+        public override void UpdateSliderValues()
         {
-            sliderRed.SliderValue = Mathf.Clamp01(color.r);
-            sliderGreen.SliderValue = Mathf.Clamp01(color.g);
-            sliderBlue.SliderValue = Mathf.Clamp01(color.b);
+            sliderRed.SliderValue = Mathf.Clamp(colorPicker.CustomColor.r, 0, 1);
+            sliderGreen.SliderValue = Mathf.Clamp(colorPicker.CustomColor.g, 0, 1);
+            sliderBlue.SliderValue = Mathf.Clamp(colorPicker.CustomColor.b, 0, 1);
         }
 
-        public void UpdateSliderText(Color color)
+        public override void UpdateTextObjects()
         {
-            textRed.text = Mathf.Clamp(Mathf.RoundToInt(color.r * 255), 0, 255).ToString();
-            textGreen.text = Mathf.Clamp(Mathf.RoundToInt(color.g * 255), 0, 255).ToString();
-            textBlue.text = Mathf.Clamp(Mathf.RoundToInt(color.b * 255), 0, 255).ToString();
-        }
-
-        public void UpdateColorRGB()
-        {
-            if (isDraggingSliders)
-            {
-                OnUpdateRGB(sliderRed.SliderValue, sliderGreen.SliderValue, sliderBlue.SliderValue);
-            }
+            textRed.text = Mathf.Clamp(Mathf.RoundToInt(colorPicker.CustomColor.r * 255), 0, 255).ToString();
+            textGreen.text = Mathf.Clamp(Mathf.RoundToInt(colorPicker.CustomColor.g * 255), 0, 255).ToString();
+            textBlue.text = Mathf.Clamp(Mathf.RoundToInt(colorPicker.CustomColor.b * 255), 0, 255).ToString();
         }
     }
 }

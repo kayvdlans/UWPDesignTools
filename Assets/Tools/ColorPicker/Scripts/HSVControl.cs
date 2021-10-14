@@ -1,57 +1,48 @@
-﻿using Microsoft.MixedReality.Toolkit.UI;
+﻿using ARP.UWP.Tools.Colors;
+using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
 using UnityEngine;
 
 namespace ARP.UWP.Tools
 {
-    public class HSVControl : MonoBehaviour
+    public class HSVControl : Control
     {
-        public delegate void HSVUpdateEvent(float hue, float saturation, float brightness);
-        public event HSVUpdateEvent OnUpdateHSV = null;
-
-        [SerializeField, Header("HSV")] private PinchSlider sliderHue = null;
+        [SerializeField, Header("Sliders")] private PinchSlider sliderHue = null;
         [SerializeField] private PinchSlider sliderSaturation = null;
         [SerializeField] private PinchSlider sliderBrightness = null;
-        [SerializeField, Space] private TextMeshPro textHue = null;
+
+        [SerializeField, Header("Text Objects")] private TextMeshPro textHue = null;
         [SerializeField] private TextMeshPro textSaturation = null;
         [SerializeField] private TextMeshPro textBrightness = null;
 
-        private GradientControl gradientControl = null;
-        private bool isDraggingSliders = false;
-
-        private void Awake()
+        public override void DoUpdate()
         {
-            gradientControl = GetComponent<GradientControl>();
-        }
-
-        private void Update()
-        {
-            if (isDraggingSliders)
+            if (isDraggingSlider)
             {
-                gradientControl.CalculateDraggerPosition();
+                Color color = Color.HSVToRGB(sliderHue.SliderValue, sliderSaturation.SliderValue, sliderBrightness.SliderValue);
+                colorPicker.CustomColor.r = color.r;
+                colorPicker.CustomColor.g = color.g;
+                colorPicker.CustomColor.b = color.b;
+                colorPicker.ApplyColor();
+
+                UpdateTextObjects();
             }
         }
 
-        public void ApplySliderValues(float hue, float saturation, float brightness)
+        public override void UpdateSliderValues()
         {
-            sliderHue.SliderValue = Mathf.Clamp01(hue);
-            sliderSaturation.SliderValue = Mathf.Clamp01(saturation);
-            sliderBrightness.SliderValue = Mathf.Clamp01(brightness);
+            Color.RGBToHSV(colorPicker.CustomColor, out float hue, out float saturation, out float brightness);
+            sliderHue.SliderValue = Mathf.Clamp(hue, 0, 1);
+            sliderSaturation.SliderValue = Mathf.Clamp(saturation, 0, 1);
+            sliderBrightness.SliderValue = Mathf.Clamp(brightness, 0, 1);
         }
 
-        public void UpdateSliderText(float hue, float saturation, float brightness)
+        public override void UpdateTextObjects()
         {
+            Color.RGBToHSV(colorPicker.CustomColor, out float hue, out float saturation, out float brightness);
             textHue.text = Mathf.Clamp(Mathf.RoundToInt(hue * 360), 0, 360).ToString();
             textSaturation.text = Mathf.Clamp(Mathf.RoundToInt(saturation * 100), 0, 100) + "%";
             textBrightness.text = Mathf.Clamp(Mathf.RoundToInt(brightness * 100), 0, 100) + "%";
-        }
-
-        public void UpdateColorHSV()
-        {
-            if (isDraggingSliders)
-            {
-                OnUpdateHSV(sliderHue.SliderValue, sliderSaturation.SliderValue, sliderBrightness.SliderValue);
-            }
         }
     }
 }
