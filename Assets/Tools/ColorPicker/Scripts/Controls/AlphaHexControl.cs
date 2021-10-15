@@ -16,7 +16,8 @@ namespace ARP.UWP.Tools
         {
             if (isDraggingSlider)
             {
-                colorPicker.CustomColor.a = sliderAlpha.SliderValue;
+                colorPicker.Alpha = sliderAlpha.SliderValue;
+                colorPicker.CustomColor.a = colorPicker.Alpha;
                 colorPicker.ApplyColor();
 
                 UpdateTextObjects();

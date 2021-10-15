@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 3002
   stringTagMap:
     RenderType: Fade
   disabledShaderPasses: []
@@ -136,7 +136,7 @@ Material:
     - _Reflections: 0
     - _Refraction: 0
     - _RefractiveIndex: 0
-    - _RenderQueueOverride: 3001
+    - _RenderQueueOverride: 3002
     - _RimLight: 0
     - _RimPower: 0.25
     - _RoundCornerMargin: 0.01

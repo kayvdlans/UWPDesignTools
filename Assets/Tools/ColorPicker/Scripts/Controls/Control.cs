@@ -5,7 +5,14 @@ namespace ARP.UWP.Tools.Colors
     public abstract class Control : MonoBehaviour
     {
         [SerializeField, Header("Base Control")] protected ColorPicker colorPicker = null;
+
         protected bool isDraggingSlider = false;
+
+        protected void OnEnable()
+        {
+            UpdateSliderValues();
+            UpdateTextObjects();
+        }
 
         public abstract void DoUpdate();
         public abstract void UpdateSliderValues();

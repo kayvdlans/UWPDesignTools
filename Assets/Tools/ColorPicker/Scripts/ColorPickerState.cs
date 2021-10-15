@@ -37,7 +37,9 @@ namespace ARP.UWP.Tools
         private void OnUpdateTarget(ColorableGroup target)
         {
             if (currentState == State.RGB || currentState == State.HSV)
-            menuAlpha.SetActive(colorPicker.Target.HasTransparency);
+            {
+                menuAlpha.SetActive(true);
+            }
         }
 
         public void UpdateState(int index)
@@ -71,11 +73,11 @@ namespace ARP.UWP.Tools
                     break;
                 case State.RGB:
                     menuRGB.SetActive(true);
-                    menuAlpha.SetActive(colorPicker.Target.HasTransparency);
+                    menuAlpha.SetActive(true);
                     break;
                 case State.HSV:
                     menuHSV.SetActive(true);
-                    menuAlpha.SetActive(colorPicker.Target.HasTransparency);
+                    menuAlpha.SetActive(true);
                     break;
                 case State.Extra:
                     menuExtra.SetActive(true);

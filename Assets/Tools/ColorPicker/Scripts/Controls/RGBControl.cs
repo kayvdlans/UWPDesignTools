@@ -22,10 +22,12 @@ namespace ARP.UWP.Tools
                 colorPicker.CustomColor.r = sliderRed.SliderValue;
                 colorPicker.CustomColor.g = sliderGreen.SliderValue;
                 colorPicker.CustomColor.b = sliderBlue.SliderValue;
+
+                Color.RGBToHSV(colorPicker.CustomColor, out colorPicker.Hue, out colorPicker.Saturation, out colorPicker.Brightness);
+
                 colorPicker.ApplyColor();
 
                 UpdateTextObjects();
-
             }
         }
 
