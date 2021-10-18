@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker.Controls
 {
     public class GradientControl : MonoBehaviour, IMixedRealityTouchHandler
     {
@@ -9,7 +9,7 @@ namespace ARP.UWP.Tools
 
         [SerializeField] private MeshRenderer gradientMesh = null;
         [SerializeField] private GameObject gradientDragger = null;
-        [SerializeField] private ColorPicker colorPicker = null;
+        [SerializeField] private ColorPickerController colorPicker = null;
 
         private Vector3 dragStartPos;
         private Vector3 dragCurrentPos;

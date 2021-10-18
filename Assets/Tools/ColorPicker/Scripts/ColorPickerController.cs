@@ -1,13 +1,9 @@
-﻿using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.Rendering;
-using Microsoft.MixedReality.Toolkit.UI;
-using TMPro;
+﻿using ARP.UWP.Tools.ColorPicker.Controls;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker
 {
-    public class ColorPicker : MonoBehaviour
+    public class ColorPickerController : MonoBehaviour
     {
         public delegate void UpdateTargetEvent(ColorableGroup target);
         public event UpdateTargetEvent OnUpdateTarget = null;
@@ -27,6 +23,7 @@ namespace ARP.UWP.Tools
         [SerializeField] private RGBControl rgbControl = null;
         [SerializeField] private HSVControl hsvControl = null;
         [SerializeField] private AlphaHexControl alphaHexControl = null;
+        [SerializeField] private ColorPickerObjectContainer objectContainer = null;
 
         [HideInInspector] public Color CustomColor;
         [HideInInspector] public float Hue, Saturation, Brightness, Alpha = 1f;
@@ -34,26 +31,19 @@ namespace ARP.UWP.Tools
         private void Start()
         {
             gameObject.SetActive(false);
+
+            OnUpdateTarget += ExtractColorFromMaterial;
         }
 
-        public void SummonColorPicker(ColorableGroup colorable)
+        public void SummonColorPicker(GameObject target)
         {
-            gameObject.SetActive(true);
-            
-            Target = colorable;
-            ExtractColorFromMaterial(colorable);
+            objectContainer.SummonContainer(target);
+            gameObject.SetActive(true);   
         }
 
         public void ExtractColorFromMaterial(ColorableGroup colorable)
         {
-            if (colorable.Type == ColorableGroup.ObjectType.Text)
-            {
-                CustomColor = colorable.Renderers[0].material.GetColor("_FaceColor");
-            }
-            else
-            {
-                CustomColor = colorable.Renderers[0].material.color;
-            }
+            CustomColor = colorable.CurrentColor;
 
             Color.RGBToHSV(CustomColor, out Hue, out Saturation, out Brightness);
             ApplyColor();
@@ -79,20 +69,7 @@ namespace ARP.UWP.Tools
         {
             gradientControl.ApplyColor();
 
-            foreach (Renderer renderer in Target.Renderers)
-            {
-                if (renderer.material != null)
-                {
-                    if (Target.Type == ColorableGroup.ObjectType.Text)
-                    {
-                        renderer.material.SetColor("_FaceColor", CustomColor);
-                    }
-                    else
-                    {
-                        renderer.material.color = CustomColor;
-                    }
-                }
-            }
+            Target.ApplyColor(CustomColor);
         }
 
 

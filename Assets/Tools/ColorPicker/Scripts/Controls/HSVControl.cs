@@ -1,9 +1,8 @@
-﻿using ARP.UWP.Tools.Colors;
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker.Controls
 {
     public class HSVControl : Control
     {

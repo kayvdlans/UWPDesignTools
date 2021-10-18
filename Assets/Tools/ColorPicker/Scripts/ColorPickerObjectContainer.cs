@@ -1,22 +1,17 @@
-﻿using Microsoft.MixedReality.Toolkit.UI;
-using Microsoft.MixedReality.Toolkit.Utilities;
+﻿using ARP.UWP.Tools.Utility;
+using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker
 {
-    public class ColorableObjectContainer : MonoBehaviour
+    public class ColorPickerObjectContainer : MonoBehaviour
     {
-        [SerializeField] private GridObjectCollection buttonCollection;
+        [SerializeField] private ColorPickerController colorPicker;
+        [SerializeField] private ScrollableGridObjectCollection buttonCollection;
         [SerializeField] private Interactable selectButtonPrefab;
 
-        private ColorPicker colorPicker = null;
         private ColorableGroup[] colorables = null;
         private Interactable[] interactables = null;
-
-        private void Awake()
-        {
-            colorPicker = GetComponent<ColorPicker>();
-        }
 
         public void SummonContainer(GameObject container)
         {
@@ -45,13 +40,16 @@ namespace ARP.UWP.Tools
             {
                 ColorableGroup current = colorables[i];
                 Interactable interactable = Instantiate(selectButtonPrefab, buttonCollection.transform);
-                interactable.GetComponent<ButtonConfigHelper>().MainLabelText = colorables[i].LabelName;
                 interactable.OnClick.AddListener(() =>
                 {
                     UntoggleAll();
                     interactable.IsToggled = true;
-                    colorPicker.SummonColorPicker(current);
+                    colorPicker.Target = current;
                 });
+
+                ColorableGroupToggle groupToggle = interactable.GetComponent<ColorableGroupToggle>();
+                groupToggle.SetIcon(current.Data.icon);
+                groupToggle.SetText(current.Data.label);
 
                 interactables[i] = interactable;
             }
@@ -63,7 +61,7 @@ namespace ARP.UWP.Tools
 
         private void UpdateCollection()
         {
-            buttonCollection.UpdateCollection();
+            buttonCollection.SetIndex(0);
         }
 
         private void UntoggleAll()

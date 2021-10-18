@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &973606263368769216
+--- !u!114 &7200521394606114489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5686073166584794553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c2f665843a5744dab6852aebf61783, type: 3}
+  m_Script: {fileID: 11500000, guid: b3b41ab7034a94a438d0245996f803d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: {x: 0.075, y: 0.06}
-  hasToggleState: 1
 --- !u!1001 &4777207135698684965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 911119102589454205, guid: 73f8e1c35082a4d45827891d41219a18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08499999
+      value: 0.08500001
       objectReference: {fileID: 0}
     - target: {fileID: 911119102589454205, guid: 73f8e1c35082a4d45827891d41219a18,
         type: 3}

@@ -1,9 +1,9 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker
 {
-    [RequireComponent(typeof(ColorPicker))]
+    [RequireComponent(typeof(ColorPickerController))]
     public class ColorPickerState : MonoBehaviour
     {
         public enum State
@@ -25,12 +25,12 @@ namespace ARP.UWP.Tools
         [SerializeField] private GameObject menuAlpha = null;
         [SerializeField] private GameObject menuExtra = null;
 
-        private ColorPicker colorPicker = null;
+        private ColorPickerController colorPicker = null;
         private State currentState = State.Gradient;
 
         private void Awake()
         {
-            colorPicker = GetComponent<ColorPicker>();
+            colorPicker = GetComponent<ColorPickerController>();
             colorPicker.OnUpdateTarget += OnUpdateTarget;
         }
 

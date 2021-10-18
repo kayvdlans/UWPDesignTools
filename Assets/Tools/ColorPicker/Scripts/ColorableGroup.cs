@@ -1,27 +1,38 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace ARP.UWP.Tools.ColorPicker
 {
     public class ColorableGroup : MonoBehaviour
     {
-        public enum ObjectType
+        public delegate void ColorUpdateEvent(Color color);
+        public event ColorUpdateEvent OnUpdateColor;
+
+        [SerializeField] private ColorableData data;
+
+        private bool initializedColor = false;
+
+        public ColorableData Data => data;
+        public Color CurrentColor { get; private set; }
+
+        private void Awake()
         {
-            Frontplate, //Hide Alpha, Show Extra Properties: Border Light Brightness (%)
-            Backplate,  //Hide Alpha, Show Extra Properties: Border Light Brightness (%), Iridescence Intensity (%)
-            Text,       //Show Alpha, Other Color Property
-            Icon        //Hide Alpha
+            foreach (ColorableObject colorable in GetComponentsInChildren<ColorableObject>().Where(other => other.Data == Data))
+            {
+                colorable.AttachToGroup(this);
+                
+                if (!initializedColor)
+                {
+                    CurrentColor = colorable.GetMaterialColor();
+                    initializedColor = true;
+                }
+            }
         }
 
-        [SerializeField] private ObjectType type;
-        [SerializeField] private string labelName;
-        [SerializeField] private Renderer[] renderers = null;
-
-        public ObjectType Type => type;
-        public string LabelName => labelName == "" ? name : labelName;
-        public Renderer[] Renderers => renderers;
-        public bool HasTransparency => type == ObjectType.Text;
-        public bool HasExtraProperties => type == ObjectType.Frontplate || type == ObjectType.Backplate;
-        public bool HasBorderLight => type == ObjectType.Frontplate || type == ObjectType.Backplate;
-        public bool HasIridescence => type == ObjectType.Backplate;
+        public void ApplyColor(Color color)
+        {
+            CurrentColor = color;
+            OnUpdateColor(color);
+        }
     }
 }

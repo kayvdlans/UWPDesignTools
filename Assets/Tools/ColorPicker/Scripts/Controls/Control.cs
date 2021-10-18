@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace ARP.UWP.Tools.Colors
+namespace ARP.UWP.Tools.ColorPicker.Controls
 {
     public abstract class Control : MonoBehaviour
     {
-        [SerializeField, Header("Base Control")] protected ColorPicker colorPicker = null;
+        [SerializeField, Header("Base Control")] protected ColorPickerController colorPicker = null;
 
         protected bool isDraggingSlider = false;
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6307466208019815464}
   - component: {fileID: 6307466208019815471}
   - component: {fileID: 8207838460686616608}
+  - component: {fileID: 1002789789}
   m_Layer: 0
   m_Name: TextMeshPro
   m_TagString: Untagged
@@ -190,6 +191,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeff5df3831a5ef448b5b876e71cdeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1002789789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307466208019815469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39385bf110b437f48af7410aea8a8008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 17e4cf94c5a089843b2be6a7635f5718, type: 2}
 --- !u!1 &6307466208293314537
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +418,7 @@ GameObject:
   - component: {fileID: 6307466208529192585}
   - component: {fileID: 6307466208529192584}
   - component: {fileID: 6307466208529192591}
+  - component: {fileID: 253854004}
   m_Layer: 0
   m_Name: HighlightPlate
   m_TagString: Untagged
@@ -484,6 +499,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36065390e01a3cd40b87e4bf4acd02f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &253854004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307466208529192589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39385bf110b437f48af7410aea8a8008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 93a21069cd342ea4091a756d925866b2, type: 2}
 --- !u!1 &6307466208543075869
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +828,7 @@ GameObject:
   - component: {fileID: 9059522619146844350}
   - component: {fileID: 9059522619146844351}
   - component: {fileID: 9059522619146844348}
+  - component: {fileID: 530250408}
   m_Layer: 0
   m_Name: ColorPickerSampleButton
   m_TagString: Untagged
@@ -814,7 +843,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6307466209238324640}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.3934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -995,7 +1024,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: SummonContainer
+        m_MethodName: SummonColorPicker
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6307466209238324640}
@@ -1314,10 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59797108f59731346b904721eabcc4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  labelName: Backplate
-  renderers:
-  - {fileID: 6307466209585766839}
+  data: {fileID: 11400000, guid: 17e4cf94c5a089843b2be6a7635f5718, type: 2}
 --- !u!114 &9059522619146844351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,10 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59797108f59731346b904721eabcc4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  labelName: Icon
-  renderers:
-  - {fileID: 6307466209788557184}
+  data: {fileID: 11400000, guid: 4910052fc5d939945aedcac9740655c3, type: 2}
 --- !u!114 &9059522619146844348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,10 +1369,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59797108f59731346b904721eabcc4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  labelName: Text
-  renderers:
-  - {fileID: 6307466208019815465}
+  data: {fileID: 11400000, guid: 7654128af8b7d8948ab85184abc9d4f0, type: 2}
+--- !u!114 &530250408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307466209238324640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59797108f59731346b904721eabcc4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 93a21069cd342ea4091a756d925866b2, type: 2}
 --- !u!1 &6307466209369479597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1473,7 @@ GameObject:
   - component: {fileID: 6307466209585766832}
   - component: {fileID: 6307466209585766839}
   - component: {fileID: 8207838460686616609}
+  - component: {fileID: 50759493}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -1520,6 +1554,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fbf0a2d6614a0409d465c89385395a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &50759493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307466209585766837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39385bf110b437f48af7410aea8a8008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 7654128af8b7d8948ab85184abc9d4f0, type: 2}
 --- !u!1 &6307466209732855503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1642,7 @@ GameObject:
   - component: {fileID: 6307466209788557185}
   - component: {fileID: 6307466209788557184}
   - component: {fileID: 8207838460686616611}
+  - component: {fileID: 418746958}
   m_Layer: 5
   m_Name: UIButtonSquareIcon
   m_TagString: Untagged
@@ -1675,6 +1723,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fbf0a2d6614a0409d465c89385395a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &418746958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307466209788557190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39385bf110b437f48af7410aea8a8008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 4910052fc5d939945aedcac9740655c3, type: 2}
 --- !u!1 &6307466209858275988
 GameObject:
   m_ObjectHideFlags: 0
