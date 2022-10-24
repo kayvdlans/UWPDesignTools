@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Tools.ColorPicker.Scripts.ScriptableObjects.Editor
+namespace SG.Tools.ColorPicker.Data.Editor
 {
     [CustomEditor(typeof(ColorableData)), CanEditMultipleObjects]
     public class ColorableDataEditor : UnityEditor.Editor

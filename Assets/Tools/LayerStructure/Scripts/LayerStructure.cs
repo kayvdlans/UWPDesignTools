@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace SG.Tools.LayeredMenu
 {
     public class LayerStructure : MonoBehaviour
     {

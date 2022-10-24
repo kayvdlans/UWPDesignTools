@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker.Controls
+namespace SG.Tools.ColorPicker.Controls
 {
     public class AlphaHexControl : Control
     {

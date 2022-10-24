@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker.Controls
+namespace SG.Tools.ColorPicker.Controls
 {
     public abstract class Control : MonoBehaviour
     {

@@ -1,9 +1,9 @@
-﻿using ARP.UWP.Tools.Interfaces;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Microsoft.MixedReality.Toolkit.UI;
+using SG.Tools.LayeredMenu.Interfaces;
 using UnityEngine;
 
-namespace ARP.UWP.Tools
+namespace SG.Tools.LayeredMenu
 {
     public class Layer : MonoBehaviour
     {

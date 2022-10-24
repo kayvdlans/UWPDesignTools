@@ -1,12 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class TextSetter : MonoBehaviour
+namespace SG.Tools.LayeredMenu.Utility
 {
-    [SerializeField] private TMP_Text text = null;
-
-    public void SetText(string text)
+    public class TextSetter : MonoBehaviour
     {
-        this.text.SetText(text);
+        [SerializeField] private TMP_Text text = null;
+
+        public void SetText(string text)
+        {
+            this.text.SetText(text);
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.Utility.Editor
+namespace SG.Tools.Utility.Editor
 {
     [CustomEditor(typeof(ButtonSizer)), CanEditMultipleObjects]
     public class ButtonSizerEditor : UnityEditor.Editor

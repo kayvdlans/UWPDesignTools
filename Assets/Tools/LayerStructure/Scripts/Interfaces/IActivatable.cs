@@ -1,4 +1,4 @@
-﻿namespace ARP.UWP.Tools.Interfaces
+﻿namespace SG.Tools.LayeredMenu.Interfaces
 {
     public interface IActivatable
     {

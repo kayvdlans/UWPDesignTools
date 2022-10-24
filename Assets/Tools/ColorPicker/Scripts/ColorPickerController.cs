@@ -1,7 +1,7 @@
-﻿using ARP.UWP.Tools.ColorPicker.Controls;
+﻿using SG.Tools.ColorPicker.Controls;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker
+namespace SG.Tools.ColorPicker
 {
     public class ColorPickerController : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-﻿using ARP.UWP.Tools.Interfaces;
+﻿using SG.Tools.LayeredMenu.Interfaces;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.Components
+namespace SG.Tools.LayeredMenu.Components
 {
     public class ActivatableObject : MonoBehaviour, IActivatable
     {

@@ -1,9 +1,9 @@
-﻿using ARP.UWP.Tools.Interfaces;
-using DG.Tweening;
+﻿using DG.Tweening;
+using SG.Tools.LayeredMenu.Interfaces;
 using TMPro;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.Components
+namespace SG.Tools.LayeredMenu.Components
 {
     public class FadeableText : MonoBehaviour, IFadeable
     {

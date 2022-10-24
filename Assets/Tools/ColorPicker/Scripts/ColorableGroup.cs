@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using SG.Tools.ColorPicker.Data;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker
+namespace SG.Tools.ColorPicker
 {
     public class ColorableGroup : MonoBehaviour
     {

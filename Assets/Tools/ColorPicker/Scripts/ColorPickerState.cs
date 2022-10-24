@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker
+namespace SG.Tools.ColorPicker
 {
     [RequireComponent(typeof(ColorPickerController))]
     public class ColorPickerState : MonoBehaviour

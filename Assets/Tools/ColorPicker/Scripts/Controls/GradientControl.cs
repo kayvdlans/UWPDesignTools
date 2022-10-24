@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker.Controls
+namespace SG.Tools.ColorPicker.Controls
 {
     public class GradientControl : MonoBehaviour, IMixedRealityTouchHandler
     {

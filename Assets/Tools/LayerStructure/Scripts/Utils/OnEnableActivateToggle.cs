@@ -1,17 +1,20 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
-public class OnEnableActivateToggle : MonoBehaviour
+namespace SG.Tools.LayeredMenu.Utility
 {
-    private Interactable interactable = null;
-
-    private void Awake()
+    public class OnEnableActivateToggle : MonoBehaviour
     {
-        interactable = GetComponent<Interactable>();
-    }
+        private Interactable interactable = null;
 
-    private void OnEnable()
-    {
-        interactable.IsToggled = true;
+        private void Awake()
+        {
+            interactable = GetComponent<Interactable>();
+        }
+
+        private void OnEnable()
+        {
+            interactable.IsToggled = true;
+        }
     }
 }

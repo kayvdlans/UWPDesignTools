@@ -1,8 +1,8 @@
-﻿using ARP.UWP.Tools.Utility;
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using SG.Tools.Utility;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.ColorPicker
+namespace SG.Tools.ColorPicker
 {
     public class ColorPickerObjectContainer : MonoBehaviour
     {

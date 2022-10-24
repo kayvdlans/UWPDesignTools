@@ -1,8 +1,8 @@
-﻿using ARP.UWP.Tools.Interfaces;
-using DG.Tweening;
+﻿using DG.Tweening;
+using SG.Tools.LayeredMenu.Interfaces;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.Components
+namespace SG.Tools.LayeredMenu.Components
 {
     public class FadeableObject : MonoBehaviour, IFadeable
     {

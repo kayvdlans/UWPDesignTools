@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
 using UnityEngine;
 
-namespace ARP.UWP.Tools.Utility
+namespace SG.Tools.Utility
 {
     public class ScrollableGridObjectCollection : GridObjectCollection
     {
